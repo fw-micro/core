@@ -28,7 +28,7 @@ class MigrateDown extends Command
             $className = $row['class'];
             $output->write($className . '...');
             $this->down($className);
-            $output->write('   done.');
+            $output->writeln('   done.');
         }
 
         return 0;

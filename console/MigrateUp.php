@@ -27,7 +27,7 @@ class MigrateUp extends Command
         foreach ($migrateList as $class) {
             $output->write($class . '...');
             $this->up($class);
-            $output->write('   done.');
+            $output->writeln('   done.');
         }
 
         return 0;
