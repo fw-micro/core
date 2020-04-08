@@ -1,0 +1,20 @@
+{
+    "name": "fw_micro/core",
+    "require": {
+        "php": "^7.1",
+        "fw_micro/interfaces": "^1",
+        "fw_micro/pattern": "^1",
+        "fw_micro/db": "^1",
+        "symfony/console": "^5.0",
+        "monolog/monolog": "^2.0",
+        "psr/log": "^1.1",
+        "nette/routing": "^3.0",
+        "symfony/debug": "^4.4",
+        "titasgailius/terminal": "^0.2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "fw_micro\\core\\": "/"
+        }
+    }
+}
