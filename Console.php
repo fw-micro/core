@@ -2,6 +2,7 @@
 
 namespace fw_micro\core;
 
+use fw_micro\pattern\Register\Register;
 use Symfony\Component\Console\Application;
 
 /**
@@ -11,12 +12,14 @@ use Symfony\Component\Console\Application;
 class Console
 {
     use GetBootstrap;
+
     /**
      * @param array $config
      * @throws \Exception
      */
     public function run(array $config): void
     {
+        Register::get()->config = $config;
         if (!$this->getBootstrap($config)->run($config)) {
             throw new \Exception('bad loader');
         }

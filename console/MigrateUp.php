@@ -25,7 +25,9 @@ class MigrateUp extends Command
         $migrateList = Register::get()->config['migrate'] ?? [];
 
         foreach ($migrateList as $class) {
+            $output->write($class . '...');
             $this->up($class);
+            $output->write('   done.');
         }
 
         return 0;

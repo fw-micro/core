@@ -26,7 +26,9 @@ class MigrateDown extends Command
 
         foreach ($res as $row) {
             $className = $row['class'];
+            $output->write($className . '...');
             $this->down($className);
+            $output->write('   done.');
         }
 
         return 0;
