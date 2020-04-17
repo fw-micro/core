@@ -20,6 +20,15 @@ class Field
     private $type = [];
 
     /**
+     * Field constructor.
+     * @param string|null $name
+     */
+    public function __construct(?string $name = null)
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @param string $name
      * @return $this
      */
@@ -81,6 +90,15 @@ class Field
     public function unique(): self
     {
         $this->type[] = 'UNIQUE';
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function text(): self
+    {
+        $this->type[] = 'TEXT';
         return $this;
     }
 
