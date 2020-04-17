@@ -1,5 +1,6 @@
 {
     "name": "fw_micro/core",
+    "license": "MIT",
     "require": {
         "php": "^7.1",
         "fw_micro/interfaces": "^1",
