@@ -49,7 +49,7 @@ class BaseController
         $default = $list['default'] ?? null;
         $action = Register::get()->request['action'];
 
-        if (in_array($action, $list)) {
+        if (in_array($action, $list['allow'])) {
             return true;
         }
 
