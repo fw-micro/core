@@ -54,7 +54,8 @@ class BaseController
         }
 
         if ($default) {
-            return $this->redirect($default);
+            $this->redirect($default)->print();
+            die;
         }
 
         return false;
