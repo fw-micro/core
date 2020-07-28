@@ -11,6 +11,8 @@ use fw_micro\pattern\Register\Register;
  */
 class BaseController
 {
+    use Render;
+
     protected $layout;
 
     public function __construct()
@@ -31,7 +33,7 @@ class BaseController
 
     public function getUserGroup()
     {
-        return '*';
+        return Register::get()->auth->isLogin() ? '@' : '*';
     }
 
     public function checkAccess(array $accessList)
@@ -59,29 +61,6 @@ class BaseController
         }
 
         return false;
-    }
-
-    /**
-     * @param string $file
-     * @param array $options
-     * @return Response
-     */
-    public function render(string $file, array $options): Response
-    {
-        extract($options);
-        $response = new Response();
-        ob_start();
-        require $file;
-        $content = ob_get_clean();
-        if ($this->layout) {
-            ob_start();
-            require $this->layout;
-            $html = ob_get_clean();
-        } else {
-            $html = $content;
-        }
-        $response->setBody($html);
-        return $response;
     }
 
     public function redirect(string $url): Response
