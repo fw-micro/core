@@ -12,7 +12,8 @@
         "nette/routing": "^3.0",
         "symfony/debug": "^4.4",
         "titasgailius/terminal": "^0.4",
-        "fw_micro/security": "^0.2.0"
+        "fw_micro/security": "^0.2.0",
+        "symfony/var-dumper": "^5.1"
     },
     "autoload": {
         "psr-4": {
