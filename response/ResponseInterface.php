@@ -13,4 +13,5 @@ interface ResponseInterface
     public function setCookie(string $key, $value): self;
     public function setSession(string $key, $value): self;
     public function print();
+    public function getHtml(): string;
 }

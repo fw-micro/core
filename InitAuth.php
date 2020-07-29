@@ -2,7 +2,7 @@
 
 namespace fw_micro\core;
 
-use fw_micro\core\auth\AuthInterface;
+use fw_micro\interfaces\AuthInterface
 use fw_micro\interfaces\Bootstrap;
 use fw_micro\pattern\CoR\AbstractHandler;
 use fw_micro\pattern\Register\Register;
@@ -13,13 +13,17 @@ use fw_micro\pattern\Register\Register;
  */
 class InitAuth extends AbstractHandler implements Bootstrap
 {
+    public $auth;
+    public $config = [];
+
     /**
      * @param $request
      * @return bool
      */
     public function exec($request): bool
     {
-        $auth = new $request['auth']($request['config']);
+        session_start();
+        $auth = new $this->auth($this->config);
         if ($auth instanceof AuthInterface) {
             Register::get()->auth = $auth;
             return true;

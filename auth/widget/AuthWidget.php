@@ -16,6 +16,6 @@ class AuthWidget extends Widget
      */
     public function begin(array $config = []): string
     {
-        return $this->render(__DIR__ . '/auth.php', $config);
+        return $this->render(__DIR__ . '/auth.php', $config)->getHtml();
     }
 }

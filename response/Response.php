@@ -89,4 +89,9 @@ class Response implements ResponseInterface
 
         echo $this->html;
     }
+
+    public function getHtml(): string
+    {
+        return $this->html;
+    }
 }

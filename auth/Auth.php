@@ -2,6 +2,7 @@
 
 namespace fw_micro\core\auth;
 
+use fw_micro\interfaces\AuthInterface;
 use fw_micro\pattern\Register\Register;
 use fw_micro\security\CSRF;
 use fw_micro\security\Password;
@@ -30,9 +31,9 @@ class Auth implements AuthInterface
         $login = sha1($login);
         $select = Register::get()->db->select($this->table, ['id', 'password'], ['login' => $login]);
         if (is_array($select) && count($select)) {
-            if (Password::verify($password, $select['password'])) {
+            if (Password::verify($password, $select[0]['password'])) {
                 $_SESSION['auth'] = true;
-                $_SESSION['id'] = $select['id'];
+                $_SESSION['id'] = $select[0]['id'];
                 return true;
             }
         }
@@ -45,8 +46,8 @@ class Auth implements AuthInterface
     public function logout(): void
     {
         session_destroy();
-        session_regenerate_id();
         session_start();
+        session_regenerate_id();
     }
 
     public function register(string $login, string $password): bool

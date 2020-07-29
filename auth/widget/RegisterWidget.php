@@ -11,6 +11,6 @@ class RegisterWidget extends Widget
 
     public function begin(array $config = []): string
     {
-        return $this->render(__DIR__ . '/register.php', $config);
+        return $this->render(__DIR__ . '/register.php', $config)->getHtml();
     }
 }

@@ -33,12 +33,18 @@ class BaseController
 
     public function getUserGroup()
     {
-        return Register::get()->auth->isLogin() ? '@' : '*';
+        return Register::get()->auth->isLogin() ? '@' : '?';
     }
 
     public function checkAccess(array $accessList)
     {
-        if (in_array('*', $accessList['*'] ?? [])) {
+        $action = Register::get()->request['action'];
+
+
+        if (
+            in_array('*', $accessList['*']['allow'] ?? []) ||
+            in_array($action, $accessList['*']['allow'] ?? [])
+        ) {
             return true;
         }
 
@@ -49,7 +55,6 @@ class BaseController
 
         $list = $accessList[$group];
         $default = $list['default'] ?? null;
-        $action = Register::get()->request['action'];
 
         if (in_array($action, $list['allow'])) {
             return true;
