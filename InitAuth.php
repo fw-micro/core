@@ -2,7 +2,7 @@
 
 namespace fw_micro\core;
 
-use fw_micro\interfaces\AuthInterface
+use fw_micro\interfaces\AuthInterface;
 use fw_micro\interfaces\Bootstrap;
 use fw_micro\pattern\CoR\AbstractHandler;
 use fw_micro\pattern\Register\Register;
